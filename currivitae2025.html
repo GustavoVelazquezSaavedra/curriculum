@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Gustavo Velázquez</title>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Estilos CSS -->
+    <style>
+        body{
+            margin: 0;
+            font-family: "Segoe UI", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        header{
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .profile-pic{
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover{transform: scale(1.05);}
+        header h1{margin: 0; font-size: 2.2rem; color: #38bdf8;}
+        header p{margin: 0.5rem; font-size: 1.1rem; color: #38bdf8;}
+
+        /*redes*/
+        .social-links{
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .social-links a{
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            background: #334155;
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover{
+            background: #38bdf8;
+            color: #0f172a;
+            transform: scale(1.05);
+        }
+
+        main{max-width: 900px; margin: 2rem auto; padding: 1rem;}
+        section{margin-bottom: 2rem; padding: 1.5rem; background: #1e293b; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);}
+        section h2{color: #38bdf8; margin-bottom: 1rem;}
+        ul{padding-left: 1.2rem;}
+        li{margin-bottom: 0.5rem;}
+
+        #about p{
+            border-left: 4px solid #38bdf8;
+            padding-left: 1rem;
+            font-style: italic;
+            color: #cbd5e1;
+        }
+
+        footer{
+            text-align: center;
+            padding: 1.5rem;
+            background: #0f172a;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .tag{
+            display: inline-block;
+            margin: 0.3rem;
+            padding: 0.4rem 0.9rem;
+            background: #334155;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #38bdf8;
+            transition: background 0.3s;
+        }
+
+        .tag:hover{ background: #475569;}
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://scontent.fagt5-1.fna.fbcdn.net/v/t39.30808-6/515439571_24121422250826757_8770490750937322330_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=g9cu3JJyTo0Q7kNvwE3XEtZ&_nc_oc=Admf-Jdnl2gIz_ALaeyFUcWPtPoPFoMsBJT9x1nsOAaaFTTiqLgJygrlLeAiaHvDBQ-jRb3GerpTn5QOor9hgLPN&_nc_zt=23&_nc_ht=scontent.fagt5-1.fna&_nc_gid=R3dy3LWzeewJC8-BkGxhCg&oh=00_AfVLJExJExyX8Lb-zGxyigLr9GFVoRM83vsfzL270wCGDw&oe=68A6486A" alt="Foto de Gustavo Velázquez" class="profile-pic">
+        <h1>Gustavo Gabriel Velázquez Saavedra</h1>
+        <p>Desarrollador | Seguridad Informática | Linux Lover</p>
+
+        <div class="social-links">
+            <a href="https://github.com/GustavoVelazquezSaavedra" target="_blank"><i class="fab fa-github"></i>Github</a>
+            <a href="https://github.com/gustavo97Gober" target="_blank"><i class="fab fa-github"></i>Github 2</a>
+            <a href="https://www.linkedin.com/in/gustavo-velazquez-4b965b179/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+            <a href="https://www.tiktok.com/@gustavovelazquez97_1997" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
+            <a href="https://www.facebook.com/gustavogabriel.velazquez1" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+            <a href="https://www.instagram.com/gustavo.velazquez1" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+            <a href="https://wa.me/595972366265" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+        </div>
+    </header>
+    <main>
+        <!--Acerca de Mi-->
+        <section id="about">
+            <h2>Acerca de mi</h2>
+            <p id="autoText"></p>
+        </section>
+
+        <!--Datos Personales-->
+        <section>
+            <h2>Datos Personales</h2>
+            <ul>
+                <li><strong>Edad:</strong> <span id="edad"></span> años</li>
+                <li><strong>Fecha de Nacimiento:</strong> 27/11/1997</li>
+                <li><strong>C.I.:</strong> *.***.***</li>
+                <li><strong>Lugar</strong> Minga Guazú</li>
+                <li><strong>Celular:</strong> +595 972 366 265</li>
+                <li><strong>Correo:</strong> gustavi11164@gmail.com</li>
+            </ul>
+        </section>
+
+        <!--Experiencias-->
+        <section>
+            <h2>Formación Académica</h2>
+            <ul>
+                <li>Universidad Privada del Este Filial CDE - Ingeniería Informática (Congelado para el 4to Año)</li>
+                <li>Bachiller Científico - Colegio Nacional General Bernardino Caballero (2013 - 2015)</li>
+            </ul>
+        </section>
+
+        <!--Otros Estudios-->
+        <section>
+            <h2>
+                Otros Estudios
+            </h2>
+            <div>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP</span>
+                <span class="tag">Python</span>
+                <span class="tag">C</span>
+                <span class="tag">C++</span>
+                <span class="tag">Linux(Kali)</span>
+                <span class="tag">Ciberseguridad</span>
+                <span class="tag">Redes</span>
+                <span class="tag">Base de Datos</span>
+
+            </div>
+        </section>
+
+        <!--Idiomas-->
+        <section>
+            <h2>Idiomas</h2>
+            <ul>
+                <li>Español: Nativo</li>
+                <li>Guaraní: Nativo</li>
+                <li>Portugues: Avanzado</li>
+                <li>Inglés: Intermedio</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+                
+                &copy; 2025 - Curriculum de Gustavo Velázquez | Hecho con 💻 y pasión por la tecnología
+    </footer>
+
+    <!--Script-->
+    <script>
+        // =====EFECTO AUTOMATICO "Acerca de mi"=====
+        const aboutText = "Apasionado por la tecnología, la programación, la seguridad informática y Linux. Disfruto aprender nuevas herramientas, explorar el hacking ético y crear soluciones innovadoras que mejoren procesos.";
+        let i = 0;
+        function typeEffect(){
+            if (i < aboutText.length){
+                document.getElementById("autoText").innerHTML += aboutText.charAt(i);
+                i++;
+                setTimeout(typeEffect, 50);
+            }
+        }
+        window.onload = () => {
+            typeEffect();
+
+            //=====Calcular la edad a agregar al CV=====
+            const nacimiento = new Date(1997, 10, 27); // 27 de nov de 1997 (mes 10 porque enero es igual al 0 en iteraciones)
+            const hoy = new Date();
+            let edad = hoy.getUTCFullYear() - nacimiento.getUTCFullYear();
+
+            //Si no pasa el cumpleaños este año, restamos 1
+            const cumpleEsteAnio = new Date(hoy.getFullYear(), 10, 27);
+            if (hoy < cumpleEsteAnio){
+                edad--;
+            }
+
+            document.getElementById("edad").textContent = edad;
+        }
+    </script>
+
+</body>
+</html>
