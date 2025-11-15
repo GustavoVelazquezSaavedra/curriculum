@@ -4,227 +4,628 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae - Gustavo Velázquez</title>
-    <!-- Font Awesome para iconos -->
+    <title>// CURRICULUM VITAE - GUSTAVO VELÁZQUEZ //</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Estilos CSS -->
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        body{
+        :root {
+            --hacker-green: #00ff41;
+            --matrix-green: #00cc33;
+            --dark-bg: #0a0a0a;
+            --terminal-bg: #001100;
+            --glow-color: rgba(0, 255, 65, 0.7);
+            --cyber-blue: #0ff0fc;
+            --neon-purple: #bc13fe;
+        }
+        
+        * {
             margin: 0;
-            font-family: "Segoe UI", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f172a;
-            color: #e2e8f0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--hacker-green);
             line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 80, 0, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 80, 0, 0.03) 0%, transparent 20%);
+            position: relative;
+            min-height: 100vh;
         }
-
-        header{
-            text-align: center;
-            padding: 2rem 1rem;
-            background: linear-gradient(135deg, #1e293b, #334155);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        
+        /* Efecto de lluvia de código Matrix */
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
         }
-
-        .profile-pic{
-            width: 150px;
-            height: 150px;
+        
+        /* Efecto de escaneo */
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to bottom, transparent, var(--hacker-green), transparent);
+            box-shadow: 0 0 10px var(--hacker-green);
+            z-index: 1000;
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes scan {
+            0% {
+                top: 0%;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+        
+        /* Header con efecto terminal */
+        .terminal-header {
+            background: linear-gradient(135deg, rgba(10, 20, 10, 0.9), rgba(5, 15, 5, 0.95));
+            border-bottom: 2px solid var(--hacker-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        
+        .terminal-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 65, 0.05) 0px,
+                rgba(0, 255, 65, 0.05) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+        
+        .profile-pic {
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid #38bdf8;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
+            border: 3px solid var(--hacker-green);
+            box-shadow: 0 0 25px var(--glow-color);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            filter: sepia(100%) hue-rotate(90deg) saturate(500%);
         }
-
-        .profile-pic:hover{transform: scale(1.05);}
-        header h1{margin: 0; font-size: 2.2rem; color: #38bdf8;}
-        header p{margin: 0.5rem; font-size: 1.1rem; color: #38bdf8;}
-
-        /*redes*/
-        .social-links{
-            margin-top: 1rem;
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px var(--glow-color);
+        }
+        
+        .hacker-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--hacker-green);
+            text-shadow: 0 0 10px var(--glow-color);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .hacker-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--cyber-blue);
+            text-shadow: 0 0 5px rgba(0, 240, 252, 0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Redes sociales con estilo hacker */
+        .social-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 0.8rem;
+            margin-top: 1.5rem;
         }
-
-        .social-links a{
+        
+        .social-links a {
             text-decoration: none;
             font-size: 1.1rem;
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            background: #334155;
-            color: #38bdf8;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            background: rgba(10, 30, 10, 0.7);
+            color: var(--hacker-green);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid var(--hacker-green);
+            font-family: 'Share Tech Mono', monospace;
+            position: relative;
+            overflow: hidden;
         }
-
-        .social-links a:hover{
-            background: #38bdf8;
-            color: #0f172a;
-            transform: scale(1.05);
+        
+        .social-links a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+            transition: left 0.5s;
         }
-
-        main{max-width: 900px; margin: 2rem auto; padding: 1rem;}
-        section{margin-bottom: 2rem; padding: 1.5rem; background: #1e293b; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);}
-        section h2{color: #38bdf8; margin-bottom: 1rem;}
-        ul{padding-left: 1.2rem;}
-        li{margin-bottom: 0.5rem;}
-
-        #about p{
-            border-left: 4px solid #38bdf8;
-            padding-left: 1rem;
-            font-style: italic;
-            color: #cbd5e1;
+        
+        .social-links a:hover {
+            background: rgba(0, 255, 65, 0.1);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
         }
-
-        footer{
-            text-align: center;
+        
+        .social-links a:hover::before {
+            left: 100%;
+        }
+        
+        /* Contenido principal */
+        .hacker-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .terminal-section {
+            background: rgba(5, 15, 5, 0.8);
+            border: 1px solid var(--hacker-green);
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .terminal-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 65, 0.03) 0px,
+                rgba(0, 255, 65, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+        
+        .section-header {
+            background: rgba(0, 30, 0, 0.7);
+            border-bottom: 1px solid var(--hacker-green);
+            padding: 1rem 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: var(--cyber-blue);
+            text-shadow: 0 0 5px rgba(0, 240, 252, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-content {
             padding: 1.5rem;
-            background: #0f172a;
-            color: #64748b;
-            font-size: 0.9rem;
         }
-
-        .tag{
-            display: inline-block;
-            margin: 0.3rem;
-            padding: 0.4rem 0.9rem;
-            background: #334155;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #38bdf8;
-            transition: background 0.3s;
+        
+        /* Efecto de texto de terminal */
+        .terminal-text {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--hacker-green);
+            line-height: 1.7;
+            border-left: 3px solid var(--hacker-green);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
         }
-
-        .tag:hover{ background: #475569;}
+        
+        /* Listas con estilo hacker */
+        .hacker-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .hacker-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+        }
+        
+        .hacker-list li::before {
+            content: ">>";
+            position: absolute;
+            left: 0;
+            color: var(--neon-purple);
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        .hacker-list strong {
+            color: var(--cyber-blue);
+            font-weight: 600;
+        }
+        
+        /* Tags de habilidades */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+        
+        .skill-tag {
+            background: rgba(0, 40, 0, 0.7);
+            color: var(--hacker-green);
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--hacker-green);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-tag::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .skill-tag:hover {
+            background: rgba(0, 255, 65, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+        }
+        
+        .skill-tag:hover::before {
+            left: 100%;
+        }
+        
+        /* Footer */
+        .hacker-footer {
+            background: rgba(5, 15, 5, 0.9);
+            border-top: 1px solid var(--hacker-green);
+            padding: 1.5rem;
+            text-align: center;
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--matrix-green);
+            margin-top: 2rem;
+        }
+        
+        /* Efectos de brillo y parpadeo */
+        .blink {
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .glow {
+            text-shadow: 0 0 5px currentColor;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hacker-name {
+                font-size: 2rem;
+            }
+            
+            .social-links {
+                gap: 0.5rem;
+            }
+            
+            .social-links a {
+                font-size: 0.9rem;
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .section-header {
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <img src="https://avatars.githubusercontent.com/u/168741027?v=4" alt="Foto de Gustavo Velázquez" class="profile-pic">
-        <h1>Gustavo Gabriel Velázquez Saavedra</h1>
-        <p>Desarrollador | Seguridad Informática | Linux Lover</p>
-
-        <div class="social-links">
-            <a href="https://github.com/GustavoVelazquezSaavedra" target="_blank"><i class="fab fa-github"></i>Github</a>
-            <a href="https://github.com/gustavo97Gober" target="_blank"><i class="fab fa-github"></i>Github 2</a>
-            <a href="https://www.linkedin.com/in/gustavo-velazquez-4b965b179/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
-            <a href="https://www.tiktok.com/@gustavovelazquez97_1997" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
-            <a href="https://www.facebook.com/gustavogabriel.velazquez1" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
-            <a href="https://www.instagram.com/gustavo.velazquez1" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
-            <a href="https://wa.me/595972366265" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+    <!-- Efecto de escaneo -->
+    <div class="scan-line"></div>
+    
+    <!-- Efecto Matrix de fondo -->
+    <canvas id="matrix-bg"></canvas>
+    
+    <!-- Header -->
+    <header class="terminal-header">
+        <div class="container text-center">
+            <img src="https://avatars.githubusercontent.com/u/168741027?v=4" alt="Foto de Gustavo Velázquez" class="profile-pic">
+            <h1 class="hacker-name">GUSTAVO GABRIEL VELÁZQUEZ SAAVEDRA</h1>
+            <p class="hacker-title">DESARROLLADOR | SEGURIDAD INFORMÁTICA | LINUX LOVER</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/GustavoVelazquezSaavedra" target="_blank">
+                    <i class="fab fa-github"></i> GITHUB
+                </a>
+                <a href="https://github.com/gustavo97Gober" target="_blank">
+                    <i class="fab fa-github"></i> GITHUB 2
+                </a>
+                <a href="https://www.linkedin.com/in/gustavo-velazquez-4b965b179/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LINKEDIN
+                </a>
+                <a href="https://www.tiktok.com/@gustavovelazquez97_1997" target="_blank">
+                    <i class="fab fa-tiktok"></i> TIKTOK
+                </a>
+                <a href="https://www.facebook.com/gustavogabriel.velazquez1" target="_blank">
+                    <i class="fab fa-facebook"></i> FACEBOOK
+                </a>
+                <a href="https://www.instagram.com/gustavo.velazquez1" target="_blank">
+                    <i class="fab fa-instagram"></i> INSTAGRAM
+                </a>
+                <a href="https://wa.me/595972366265" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WHATSAPP
+                </a>
+            </div>
         </div>
     </header>
-    <main>
-        <!--Acerca de Mi-->
-        <section id="about">
-            <h2>Acerca de mi</h2>
-            <p id="autoText"></p>
-        </section>
-
-        <!--Datos Personales-->
-        <section>
-            <h2>Datos Personales</h2>
-            <ul>
-                <li><strong>Edad:</strong> <span id="edad"></span> años</li>
-                <li><strong>Fecha de Nacimiento:</strong> 27/11/1997</li>
-                <li><strong>C.I.:</strong> *.***.***</li>
-                <li><strong>Lugar:</strong> Minga Guazú</li>
-                <li><strong>Celular:</strong> +595 972 366 265</li>
-                <li><strong>Correo:</strong> gustavi11164@gmail.com</li>
-            </ul>
-        </section>
-
-        <!--Experiencias-->
-        <section>
-      <h2>Experiencias Laborales</h2>
-          <ul>
-            <li><strong>Gobernación de Alto Paraná (2020-2025):</strong> Técnico Desarrollador, RSI, Director TI.</li>
-            <li><strong>Micro’s Informática (11 Meses):</strong> Técnico en Informática.</li>
-            <li><strong>Fujikura Automotive Paraguay (9 Meses):</strong> Auditor de Calidad.</li>
-            <li><strong>Bazar Tentación - Argentina (1 Año):</strong> Vendedor y Atención al Cliente.</li>
-          </ul>
-        </section>
-        <!--Formacion-->
-        <section>
-            <h2>Formación Académica</h2>
-            <ul>
-                <li>Universidad Privada del Este Filial CDE - Ingeniería Informática (Retroalimentación para el 4to Año(2026))</li>
-                <li>Bachiller Científico - Colegio Nacional General Bernardino Caballero (2013 - 2015)</li>
-            </ul>
-        </section>
-
-        <!--Otros Estudios-->
-        <section>
-            <h2>
-                Otros Estudios y conocimientos avanzados
-            </h2>
-            <div>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">PHP</span>
-                <span class="tag">Python</span>
-                <span class="tag">C</span>
-                <span class="tag">C++</span>
-                <span class="tag">Linux(Kali)</span>
-                <span class="tag">Ciberseguridad</span>
-                <span class="tag">Redes</span>
-                <span class="tag">Base de Datos</span>
-
+    
+    <!-- Contenido principal -->
+    <main class="hacker-container">
+        <!-- Acerca de mí -->
+        <section class="terminal-section">
+            <div class="section-header">
+                <i class="fas fa-terminal blink"></i>
+                <span>ACERCA DE MÍ</span>
+            </div>
+            <div class="section-content">
+                <p class="terminal-text" id="autoText"></p>
             </div>
         </section>
-
-        <!--Idiomas-->
-        <section>
-            <h2>Idiomas</h2>
-            <ul>
-                <li>Español: Nativo</li>
-                <li>Guaraní: Nativo</li>
-                <li>Portugues: Avanzado</li>
-                <li>Inglés: Intermedio</li>
-            </ul>
+        
+        <!-- Datos personales -->
+        <section class="terminal-section">
+            <div class="section-header">
+                <i class="fas fa-user-secret"></i>
+                <span>DATOS PERSONALES</span>
+            </div>
+            <div class="section-content">
+                <ul class="hacker-list">
+                    <li><strong>EDAD:</strong> <span id="edad"></span> AÑOS</li>
+                    <li><strong>FECHA DE NACIMIENTO:</strong> 27/11/1997</li>
+                    <li><strong>C.I.:</strong> *.***.***</li>
+                    <li><strong>LUGAR:</strong> MINGA GUAZÚ</li>
+                    <li><strong>CELULAR:</strong> +595 972 366 265</li>
+                    <li><strong>CORREO:</strong> GUSTAVI11164@GMAIL.COM</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Experiencias laborales -->
+        <section class="terminal-section">
+            <div class="section-header">
+                <i class="fas fa-briefcase"></i>
+                <span>EXPERIENCIAS LABORALES</span>
+            </div>
+            <div class="section-content">
+                <ul class="hacker-list">
+                    <li><strong>GOBERNACIÓN DE ALTO PARANÁ (2020-2025):</strong> TÉCNICO DESARROLLADOR, RSI, DIRECTOR TI.</li>
+                    <li><strong>MICRO'S INFORMÁTICA (11 MESES):</strong> TÉCNICO EN INFORMÁTICA.</li>
+                    <li><strong>FUJIKURA AUTOMOTIVE PARAGUAY (9 MESES):</strong> AUDITOR DE CALIDAD.</li>
+                    <li><strong>BAZAR TENTACIÓN - ARGENTINA (1 AÑO):</strong> VENDEDOR Y ATENCIÓN AL CLIENTE.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Formación académica -->
+        <section class="terminal-section">
+            <div class="section-header">
+                <i class="fas fa-graduation-cap"></i>
+                <span>FORMACIÓN ACADÉMICA</span>
+            </div>
+            <div class="section-content">
+                <ul class="hacker-list">
+                    <li>UNIVERSIDAD PRIVADA DEL ESTE FILIAL CDE - INGENIERÍA INFORMÁTICA (RETROALIMENTACIÓN PARA EL 4TO AÑO(2026))</li>
+                    <li>BACHILLER CIENTÍFICO - COLEGIO NACIONAL GENERAL BERNARDINO CABALLERO (2013 - 2015)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Otros estudios -->
+        <section class="terminal-section">
+            <div class="section-header">
+                <i class="fas fa-laptop-code"></i>
+                <span>OTROS ESTUDIOS Y CONOCIMIENTOS AVANZADOS</span>
+            </div>
+            <div class="section-content">
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JAVASCRIPT</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">PYTHON</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">LINUX(KALI)</span>
+                    <span class="skill-tag">CIBERSEGURIDAD</span>
+                    <span class="skill-tag">REDES</span>
+                    <span class="skill-tag">BASE DE DATOS</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Idiomas -->
+        <section class="terminal-section">
+            <div class="section-header">
+                <i class="fas fa-language"></i>
+                <span>IDIOMAS</span>
+            </div>
+            <div class="section-content">
+                <ul class="hacker-list">
+                    <li>ESPAÑOL: NATIVO</li>
+                    <li>GUARANÍ: NATIVO</li>
+                    <li>PORTUGUÉS: AVANZADO</li>
+                    <li>INGLÉS: INTERMEDIO</li>
+                </ul>
+            </div>
         </section>
     </main>
-
-    <footer>
-                
-                &copy; 2025 - Curriculum de Gustavo Velázquez | Hecho con 💻 y pasión por la tecnología
+    
+    <!-- Footer -->
+    <footer class="hacker-footer">
+        <div class="container">
+            <p class="mb-0">
+                &copy; 2025 - CURRICULUM DE GUSTAVO VELÁZQUEZ | HECHO CON <i class="fas fa-heart text-danger blink"></i> Y PASIÓN POR LA TECNOLOGÍA
+            </p>
+        </div>
     </footer>
-
-    <!--Script-->
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script personalizado -->
     <script>
-        // =====EFECTO AUTOMATICO "Acerca de mi"=====
-        const aboutText = "Apasionado por la tecnología, la programación, la seguridad informática y Linux. Disfruto aprender nuevas herramientas, explorar el hacking ético y crear soluciones innovadoras que mejoren procesos.";
+        // ===== EFECTO MATRIX DE FONDO =====
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        
+        // Configurar canvas para ocupar toda la pantalla
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Caracteres para el efecto Matrix
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*()[]{}";
+        const charArray = chars.split('');
+        
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        
+        // Array de gotas - una por columna
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+        }
+        
+        // Dibujar el efecto Matrix
+        function drawMatrix() {
+            // Fondo semitransparente para el efecto de rastro
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                // Carácter aleatorio
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                
+                // Coordenadas x, y
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+                
+                // Dibujar el carácter
+                ctx.fillText(text, x, y);
+                
+                // Reiniciar la gota cuando llega al fondo
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                // Mover la gota hacia abajo
+                drops[i]++;
+            }
+        }
+        
+        // ===== EFECTO AUTOMÁTICO "ACERCA DE MÍ" =====
+        const aboutText = "APASIONADO POR LA TECNOLOGÍA, LA PROGRAMACIÓN, LA SEGURIDAD INFORMÁTICA Y LINUX. DISFRUTO APRENDER NUEVAS HERRAMIENTAS, EXPLORAR EL HACKING ÉTICO Y CREAR SOLUCIONES INNOVADORAS QUE MEJOREN PROCESOS.";
         let i = 0;
-        function typeEffect(){
-            if (i < aboutText.length){
+        let typingSpeed = 50;
+        
+        function typeEffect() {
+            if (i < aboutText.length) {
                 document.getElementById("autoText").innerHTML += aboutText.charAt(i);
                 i++;
-                setTimeout(typeEffect, 50);
+                setTimeout(typeEffect, typingSpeed);
             }
         }
-        window.onload = () => {
-            typeEffect();
-
-            //=====Calcular la edad a agregar al CV=====
-            const nacimiento = new Date(1997, 10, 27); // 27 de nov de 1997 (mes 10 porque enero es igual al 0 en iteraciones)
+        
+        // ===== CALCULAR EDAD =====
+        function calculateAge() {
+            const nacimiento = new Date(1997, 10, 27);
             const hoy = new Date();
             let edad = hoy.getUTCFullYear() - nacimiento.getUTCFullYear();
-
-            //Si no pasa el cumpleaños este año, restamos 1
+            
             const cumpleEsteAnio = new Date(hoy.getFullYear(), 10, 27);
-            if (hoy < cumpleEsteAnio){
+            if (hoy < cumpleEsteAnio) {
                 edad--;
             }
-
+            
             document.getElementById("edad").textContent = edad;
         }
+        
+        // ===== INICIALIZAR TODO CUANDO CARGA LA PÁGINA =====
+        window.onload = function() {
+            // Iniciar efecto Matrix
+            setInterval(drawMatrix, 35);
+            
+            // Iniciar efecto de escritura
+            setTimeout(typeEffect, 1000);
+            
+            // Calcular edad
+            calculateAge();
+            
+            // Efecto de sonido de teclado (simulado)
+            const terminalSections = document.querySelectorAll('.terminal-section');
+            terminalSections.forEach(section => {
+                section.addEventListener('mouseenter', () => {
+                    section.style.boxShadow = '0 0 25px rgba(0, 255, 65, 0.4)';
+                });
+                
+                section.addEventListener('mouseleave', () => {
+                    section.style.boxShadow = '0 0 15px rgba(0, 255, 65, 0.2)';
+                });
+            });
+        };
+        
+        // Redimensionar canvas cuando cambia el tamaño de la ventana
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
-
 </body>
 </html>
