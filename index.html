@@ -1,631 +1,378 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>// CURRICULUM VITAE - GUSTAVO VELÁZQUEZ //</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --hacker-green: #00ff41;
-            --matrix-green: #00cc33;
-            --dark-bg: #0a0a0a;
-            --terminal-bg: #001100;
-            --glow-color: rgba(0, 255, 65, 0.7);
-            --cyber-blue: #0ff0fc;
-            --neon-purple: #bc13fe;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--hacker-green);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 80, 0, 0.03) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0, 80, 0, 0.03) 0%, transparent 20%);
-            position: relative;
-            min-height: 100vh;
-        }
-        
-        /* Efecto de lluvia de código Matrix */
-        #matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        /* Efecto de escaneo */
-        .scan-line {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to bottom, transparent, var(--hacker-green), transparent);
-            box-shadow: 0 0 10px var(--hacker-green);
-            z-index: 1000;
-            animation: scan 4s linear infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes scan {
-            0% {
-                top: 0%;
-            }
-            100% {
-                top: 100%;
-            }
-        }
-        
-        /* Header con efecto terminal */
-        .terminal-header {
-            background: linear-gradient(135deg, rgba(10, 20, 10, 0.9), rgba(5, 15, 5, 0.95));
-            border-bottom: 2px solid var(--hacker-green);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-            position: relative;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-        
-        .terminal-header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 255, 65, 0.05) 0px,
-                rgba(0, 255, 65, 0.05) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-        }
-        
-        .profile-pic {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid var(--hacker-green);
-            box-shadow: 0 0 25px var(--glow-color);
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            filter: sepia(100%) hue-rotate(90deg) saturate(500%);
-        }
-        
-        .profile-pic:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px var(--glow-color);
-        }
-        
-        .hacker-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--hacker-green);
-            text-shadow: 0 0 10px var(--glow-color);
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-        }
-        
-        .hacker-title {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.2rem;
-            color: var(--cyber-blue);
-            text-shadow: 0 0 5px rgba(0, 240, 252, 0.7);
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Redes sociales con estilo hacker */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            background: rgba(10, 30, 10, 0.7);
-            color: var(--hacker-green);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            border: 1px solid var(--hacker-green);
-            font-family: 'Share Tech Mono', monospace;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-links a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .social-links a:hover {
-            background: rgba(0, 255, 65, 0.1);
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
-        }
-        
-        .social-links a:hover::before {
-            left: 100%;
-        }
-        
-        /* Contenido principal */
-        .hacker-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        
-        .terminal-section {
-            background: rgba(5, 15, 5, 0.8);
-            border: 1px solid var(--hacker-green);
-            border-radius: 5px;
-            margin-bottom: 2rem;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .terminal-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 255, 65, 0.03) 0px,
-                rgba(0, 255, 65, 0.03) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-        }
-        
-        .section-header {
-            background: rgba(0, 30, 0, 0.7);
-            border-bottom: 1px solid var(--hacker-green);
-            padding: 1rem 1.5rem;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            color: var(--cyber-blue);
-            text-shadow: 0 0 5px rgba(0, 240, 252, 0.7);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section-content {
-            padding: 1.5rem;
-        }
-        
-        /* Efecto de texto de terminal */
-        .terminal-text {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--hacker-green);
-            line-height: 1.7;
-            border-left: 3px solid var(--hacker-green);
-            padding-left: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Listas con estilo hacker */
-        .hacker-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        .hacker-list li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.1rem;
-        }
-        
-        .hacker-list li::before {
-            content: ">>";
-            position: absolute;
-            left: 0;
-            color: var(--neon-purple);
-            font-family: 'Share Tech Mono', monospace;
-        }
-        
-        .hacker-list strong {
-            color: var(--cyber-blue);
-            font-weight: 600;
-        }
-        
-        /* Tags de habilidades */
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-        }
-        
-        .skill-tag {
-            background: rgba(0, 40, 0, 0.7);
-            color: var(--hacker-green);
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.9rem;
-            border: 1px solid var(--hacker-green);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .skill-tag::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .skill-tag:hover {
-            background: rgba(0, 255, 65, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
-        }
-        
-        .skill-tag:hover::before {
-            left: 100%;
-        }
-        
-        /* Footer */
-        .hacker-footer {
-            background: rgba(5, 15, 5, 0.9);
-            border-top: 1px solid var(--hacker-green);
-            padding: 1.5rem;
-            text-align: center;
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--matrix-green);
-            margin-top: 2rem;
-        }
-        
-        /* Efectos de brillo y parpadeo */
-        .blink {
-            animation: blink 1.5s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-        
-        .glow {
-            text-shadow: 0 0 5px currentColor;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hacker-name {
-                font-size: 2rem;
-            }
-            
-            .social-links {
-                gap: 0.5rem;
-            }
-            
-            .social-links a {
-                font-size: 0.9rem;
-                padding: 0.5rem 0.8rem;
-            }
-            
-            .section-header {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gustavo Velázquez · Desarrollador de software</title>
+<meta name="description" content="Portafolio de Gustavo Gabriel Velázquez Saavedra, Técnico en Informática y desarrollador de software en Ciudad del Este, Paraguay. PHP, Laravel, Python, Django, Ruby on Rails y React Native.">
+<meta name="author" content="Gustavo Gabriel Velázquez Saavedra">
+<meta name="theme-color" content="#0d0c0a">
+<meta property="og:title" content="Gustavo Velázquez · Desarrollador de software">
+<meta property="og:description" content="Sistemas web, facturación electrónica, inventarios y redes desde Ciudad del Este, Paraguay.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/168741027?v=4">
+<meta property="og:type" content="website">
+
+<!--
+  Portafolio de una sola página, sin dependencias externas.
+  Para cambiar colores, editá las variables de :root.
+  Para agregar un proyecto, copiá un <article class="proyecto"> y ajustá data-cat
+  ("sistemas" o "plataformas") para que el filtro lo tome.
+-->
+<style>
+:root{
+  --fondo:#0d0c0a;
+  --panel:#161410;
+  --linea:#2d2719;
+  --oro:#d4a537;
+  --oro-claro:#efd48a;
+  --texto:#ece6d6;
+  --apagado:#a29a85;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{background:var(--fondo);color:var(--texto);font-family:var(--sans);line-height:1.65;font-size:1.02rem}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{width:min(1080px,92%);margin:0 auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.2}
+h2{font-size:1.9rem;margin-bottom:1.6rem;color:var(--oro-claro)}
+section{padding:4.5rem 0;border-top:1px solid var(--linea)}
+
+/* Menú fijo */
+.menu{position:sticky;top:0;z-index:10;background:rgba(13,12,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.menu .wrap{display:flex;align-items:center;justify-content:space-between;height:3.4rem}
+.menu strong{font-family:var(--serif);font-size:1.05rem;color:var(--oro)}
+.menu ul{display:flex;gap:1.4rem;list-style:none;font-size:.92rem}
+.menu a{text-decoration:none;color:var(--apagado);transition:color .2s}
+.menu a:hover{color:var(--oro-claro)}
+
+/* Portada */
+.portada{position:relative;overflow:hidden;padding:5.5rem 0 5rem;border-top:0}
+.circuito{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+.circuito path{fill:none;stroke:var(--linea);stroke-width:1.5}
+.circuito .pulso{stroke:var(--oro);stroke-width:2;stroke-dasharray:60 900;stroke-dashoffset:960;animation:corre 7s linear infinite}
+.circuito .pulso:nth-of-type(2){animation-delay:-2.5s}
+.circuito .pulso:nth-of-type(3){animation-delay:-5s}
+@keyframes corre{to{stroke-dashoffset:0}}
+.portada .wrap{position:relative;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.portada h1{font-size:clamp(2.2rem,5.5vw,3.6rem);margin-bottom:.8rem}
+.rol{font-size:1.15rem;color:var(--oro);margin-bottom:1.2rem}
+.resumen{max-width:52ch;color:var(--apagado);margin-bottom:2rem}
+.botones{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{display:inline-block;padding:.7rem 1.4rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:.95rem;border:1px solid var(--oro);transition:background .2s,color .2s}
+.btn.lleno{background:var(--oro);color:#1a1405}
+.btn.lleno:hover{background:var(--oro-claro)}
+.btn.vacio{color:var(--oro-claro)}
+.btn.vacio:hover{background:rgba(212,165,55,.12)}
+.foto{width:230px;height:230px;border-radius:50%;object-fit:cover;border:3px solid var(--oro);box-shadow:0 0 0 8px var(--fondo),0 0 0 9px var(--linea)}
+
+/* Sobre mí */
+.sobre{display:grid;grid-template-columns:1.6fr 1fr;gap:3rem}
+.sobre p+p{margin-top:1rem}
+.datos{list-style:none;border-left:2px solid var(--oro);padding-left:1.4rem}
+.datos li{margin-bottom:1rem}
+.datos span{display:block;font-size:.85rem;color:var(--apagado)}
+
+/* Tecnologías */
+.grupos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.6rem}
+.grupo{background:var(--panel);border:1px solid var(--linea);border-radius:8px;padding:1.4rem}
+.grupo h3{font-size:1.1rem;margin-bottom:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chips span{padding:.3rem .8rem;border:1px solid var(--linea);border-radius:999px;font-size:.88rem;background:#1c1912}
+
+/* Proyectos */
+.filtros{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
+.filtros button{font:inherit;font-size:.9rem;padding:.45rem 1.1rem;border-radius:999px;border:1px solid var(--linea);background:transparent;color:var(--apagado);cursor:pointer;transition:all .2s}
+.filtros button:hover{color:var(--oro-claro);border-color:var(--oro)}
+.filtros button[aria-pressed="true"]{background:var(--oro);border-color:var(--oro);color:#1a1405}
+.proyectos{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
+.proyecto{background:var(--panel);border:1px solid var(--linea);border-top:3px solid var(--oro);border-radius:6px;padding:1.5rem;display:flex;flex-direction:column}
+.proyecto[hidden]{display:none}
+.proyecto h3{font-size:1.2rem;margin-bottom:.6rem}
+.proyecto p{color:var(--apagado);font-size:.95rem;flex:1}
+.etiquetas{margin-top:1rem;font-size:.82rem;color:var(--oro)}
+.proyecto a{margin-top:.8rem;font-size:.9rem;color:var(--oro-claro)}
+
+/* Trayectoria */
+.linea{list-style:none;border-left:2px solid var(--linea);margin-left:.5rem}
+.linea li{position:relative;padding:0 0 2rem 1.8rem}
+.linea li::before{content:"";position:absolute;left:-7px;top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--oro);border:2px solid var(--fondo)}
+.linea h3{font-size:1.15rem}
+.linea .cuando{font-size:.88rem;color:var(--oro)}
+.linea p{color:var(--apagado);font-size:.95rem}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+
+/* Idiomas */
+.idiomas{list-style:none}
+.idiomas li{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px solid var(--linea)}
+.idiomas span{color:var(--apagado)}
+
+/* Contacto */
+.contacto p{max-width:50ch;color:var(--apagado);margin-bottom:1.8rem}
+.redes{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
+.redes a{padding:.45rem 1rem;border:1px solid var(--linea);border-radius:6px;text-decoration:none;font-size:.9rem;transition:all .2s}
+.redes a:hover{border-color:var(--oro);color:var(--oro-claro)}
+
+footer{border-top:1px solid var(--linea);padding:1.8rem 0;text-align:center;color:var(--apagado);font-size:.9rem}
+footer .corazon{color:var(--oro)}
+
+@media (max-width:760px){
+  .menu ul{display:none}
+  .portada .wrap,.sobre,.dos{grid-template-columns:1fr}
+  .foto{order:-1;width:170px;height:170px}
+  section{padding:3.2rem 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .circuito .pulso{animation:none;stroke-dasharray:none;opacity:.35}
+}
+</style>
 </head>
 <body>
-    <!-- Efecto de escaneo -->
-    <div class="scan-line"></div>
-    
-    <!-- Efecto Matrix de fondo -->
-    <canvas id="matrix-bg"></canvas>
-    
-    <!-- Header -->
-    <header class="terminal-header">
-        <div class="container text-center">
-            <img src="https://avatars.githubusercontent.com/u/168741027?v=4" alt="Foto de Gustavo Velázquez" class="profile-pic">
-            <h1 class="hacker-name">GUSTAVO GABRIEL VELÁZQUEZ SAAVEDRA</h1>
-            <p class="hacker-title">DESARROLLADOR | SEGURIDAD INFORMÁTICA | LINUX LOVER</p>
-            
-            <div class="social-links">
-                <a href="https://github.com/GustavoVelazquezSaavedra" target="_blank">
-                    <i class="fab fa-github"></i> GITHUB
-                </a>
-                <a href="https://github.com/gustavo97Gober" target="_blank">
-                    <i class="fab fa-github"></i> GITHUB 2
-                </a>
-                <a href="https://www.linkedin.com/in/gustavo-velazquez-4b965b179/" target="_blank">
-                    <i class="fab fa-linkedin"></i> LINKEDIN
-                </a>
-                <a href="https://www.tiktok.com/@gustavovelazquez97_1997" target="_blank">
-                    <i class="fab fa-tiktok"></i> TIKTOK
-                </a>
-                <a href="https://www.facebook.com/gustavogabriel.velazquez1" target="_blank">
-                    <i class="fab fa-facebook"></i> FACEBOOK
-                </a>
-                <a href="https://www.instagram.com/gustavo.velazquez1" target="_blank">
-                    <i class="fab fa-instagram"></i> INSTAGRAM
-                </a>
-                <a href="https://wa.me/595972366265" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WHATSAPP
-                </a>
-            </div>
+
+<nav class="menu" aria-label="Principal">
+  <div class="wrap">
+    <strong>Gustavo Velázquez</strong>
+    <ul>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#tecnologias">Tecnologías</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#trayectoria">Trayectoria</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="portada">
+  <!-- Buses de circuito: tres trazos con un pulso dorado que recorre cada uno -->
+  <svg class="circuito" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M0 90H210L260 140H520L560 100H900L950 150H1200"/>
+    <path d="M0 260H140L190 310H430L470 270H760L810 320H1200"/>
+    <path d="M0 430H300L350 380H640L690 430H1010L1060 380H1200"/>
+    <path class="pulso" d="M0 90H210L260 140H520L560 100H900L950 150H1200"/>
+    <path class="pulso" d="M0 260H140L190 310H430L470 270H760L810 320H1200"/>
+    <path class="pulso" d="M0 430H300L350 380H640L690 430H1010L1060 380H1200"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <h1>Gustavo Gabriel Velázquez Saavedra</h1>
+      <p class="rol">Técnico en Informática · Desarrollador de software</p>
+      <p class="resumen">Desarrollo sistemas web y móviles, administro redes y servidores, y llevo más de cinco años resolviendo problemas de tecnología para instituciones y empresas de Ciudad del Este, Paraguay.</p>
+      <div class="botones">
+        <a class="btn lleno" href="https://wa.me/595972366265" target="_blank" rel="noopener">Escribime por WhatsApp</a>
+        <a class="btn vacio" href="#proyectos">Ver proyectos</a>
+      </div>
+    </div>
+    <img class="foto" src="https://avatars.githubusercontent.com/u/168741027?v=4" alt="Foto de Gustavo Velázquez" width="230" height="230">
+  </div>
+</header>
+
+<main>
+  <section id="sobre-mi">
+    <div class="wrap sobre">
+      <div>
+        <h2>Sobre mí</h2>
+        <p>Me apasiona la tecnología, la programación y Linux. Disfruto aprender herramientas nuevas y convertir procesos lentos o manuales en sistemas que funcionen bien y se puedan mantener.</p>
+        <p>Trabajé cinco años en la Gobernación de Alto Paraná, donde pasé de desarrollador a Director de TI. Hoy desarrollo sistemas a medida: facturación electrónica, inventarios, plataformas de contenido y sitios con panel de administración.</p>
+        <p>Curso el cuarto año de Ingeniería Informática y sigo sumando lenguajes y frameworks a mi caja de herramientas.</p>
+      </div>
+      <ul class="datos">
+        <li><span>Ubicación</span>Ciudad del Este, Alto Paraná, Paraguay</li>
+        <li><span>Experiencia</span>Más de 5 años en desarrollo, redes y gestión de TI</li>
+        <li><span>Estudios</span>Ingeniería Informática, Universidad Privada del Este</li>
+        <li><span>Disponibilidad</span>Proyectos a medida y consultoría</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="tecnologias">
+    <div class="wrap">
+      <h2>Tecnologías</h2>
+      <div class="grupos">
+        <div class="grupo">
+          <h3>Backend</h3>
+          <div class="chips"><span>PHP</span><span>Laravel</span><span>Python</span><span>Django</span><span>Ruby on Rails</span><span>Go</span><span>C#</span></div>
         </div>
-    </header>
-    
-    <!-- Contenido principal -->
-    <main class="hacker-container">
-        <!-- Acerca de mí -->
-        <section class="terminal-section">
-            <div class="section-header">
-                <i class="fas fa-terminal blink"></i>
-                <span>ACERCA DE MÍ</span>
-            </div>
-            <div class="section-content">
-                <p class="terminal-text" id="autoText"></p>
-            </div>
-        </section>
-        
-        <!-- Datos personales -->
-        <section class="terminal-section">
-            <div class="section-header">
-                <i class="fas fa-user-secret"></i>
-                <span>DATOS PERSONALES</span>
-            </div>
-            <div class="section-content">
-                <ul class="hacker-list">
-                    <li><strong>EDAD:</strong> <span id="edad"></span> AÑOS</li>
-                    <li><strong>FECHA DE NACIMIENTO:</strong> 27/11/1997</li>
-                    <li><strong>C.I.:</strong> *.***.***</li>
-                    <li><strong>LUGAR:</strong> MINGA GUAZÚ</li>
-                    <li><strong>CELULAR:</strong> +595 972 366 265</li>
-                    <li><strong>CORREO:</strong> GUSTAVI11164@GMAIL.COM</li>
-                </ul>
-            </div>
-        </section>
-        
-        <!-- Experiencias laborales -->
-        <section class="terminal-section">
-            <div class="section-header">
-                <i class="fas fa-briefcase"></i>
-                <span>EXPERIENCIAS LABORALES</span>
-            </div>
-            <div class="section-content">
-                <ul class="hacker-list">
-                    <li><strong>GOBERNACIÓN DE ALTO PARANÁ (2020-2025):</strong> TÉCNICO DESARROLLADOR, RSI, DIRECTOR TI.</li>
-                    <li><strong>MICRO'S INFORMÁTICA (11 MESES):</strong> TÉCNICO EN INFORMÁTICA.</li>
-                    <li><strong>FUJIKURA AUTOMOTIVE PARAGUAY (9 MESES):</strong> AUDITOR DE CALIDAD.</li>
-                    <li><strong>BAZAR TENTACIÓN - ARGENTINA (1 AÑO):</strong> VENDEDOR Y ATENCIÓN AL CLIENTE.</li>
-                </ul>
-            </div>
-        </section>
-        
-        <!-- Formación académica -->
-        <section class="terminal-section">
-            <div class="section-header">
-                <i class="fas fa-graduation-cap"></i>
-                <span>FORMACIÓN ACADÉMICA</span>
-            </div>
-            <div class="section-content">
-                <ul class="hacker-list">
-                    <li>UNIVERSIDAD PRIVADA DEL ESTE FILIAL CDE - INGENIERÍA INFORMÁTICA (RETROALIMENTACIÓN PARA EL 4TO AÑO(2026))</li>
-                    <li>BACHILLER CIENTÍFICO - COLEGIO NACIONAL GENERAL BERNARDINO CABALLERO (2013 - 2015)</li>
-                </ul>
-            </div>
-        </section>
-        
-        <!-- Otros estudios -->
-        <section class="terminal-section">
-            <div class="section-header">
-                <i class="fas fa-laptop-code"></i>
-                <span>OTROS ESTUDIOS Y CONOCIMIENTOS AVANZADOS</span>
-            </div>
-            <div class="section-content">
-                <div class="skill-tags">
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">JAVASCRIPT</span>
-                    <span class="skill-tag">PHP</span>
-                    <span class="skill-tag">PYTHON</span>
-                    <span class="skill-tag">C</span>
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">LINUX(KALI)</span>
-                    <span class="skill-tag">CIBERSEGURIDAD</span>
-                    <span class="skill-tag">REDES</span>
-                    <span class="skill-tag">BASE DE DATOS</span>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Idiomas -->
-        <section class="terminal-section">
-            <div class="section-header">
-                <i class="fas fa-language"></i>
-                <span>IDIOMAS</span>
-            </div>
-            <div class="section-content">
-                <ul class="hacker-list">
-                    <li>ESPAÑOL: NATIVO</li>
-                    <li>GUARANÍ: NATIVO</li>
-                    <li>PORTUGUÉS: AVANZADO</li>
-                    <li>INGLÉS: INTERMEDIO</li>
-                </ul>
-            </div>
-        </section>
-    </main>
-    
-    <!-- Footer -->
-    <footer class="hacker-footer">
-        <div class="container">
-            <p class="mb-0">
-                &copy; 2025 - CURRICULUM DE GUSTAVO VELÁZQUEZ | HECHO CON <i class="fas fa-heart text-danger blink"></i> Y PASIÓN POR LA TECNOLOGÍA
-            </p>
+        <div class="grupo">
+          <h3>Web y móvil</h3>
+          <div class="chips"><span>JavaScript</span><span>React</span><span>React Native</span><span>Dart</span><span>HTML</span><span>CSS</span></div>
         </div>
-    </footer>
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Script personalizado -->
-    <script>
-        // ===== EFECTO MATRIX DE FONDO =====
-        const canvas = document.getElementById('matrix-bg');
-        const ctx = canvas.getContext('2d');
-        
-        // Configurar canvas para ocupar toda la pantalla
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        // Caracteres para el efecto Matrix
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*()[]{}";
-        const charArray = chars.split('');
-        
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        
-        // Array de gotas - una por columna
-        const drops = [];
-        for (let i = 0; i < columns; i++) {
-            drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
-        }
-        
-        // Dibujar el efecto Matrix
-        function drawMatrix() {
-            // Fondo semitransparente para el efecto de rastro
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#0F0';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < drops.length; i++) {
-                // Carácter aleatorio
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
-                
-                // Coordenadas x, y
-                const x = i * fontSize;
-                const y = drops[i] * fontSize;
-                
-                // Dibujar el carácter
-                ctx.fillText(text, x, y);
-                
-                // Reiniciar la gota cuando llega al fondo
-                if (y > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                
-                // Mover la gota hacia abajo
-                drops[i]++;
-            }
-        }
-        
-        // ===== EFECTO AUTOMÁTICO "ACERCA DE MÍ" =====
-        const aboutText = "APASIONADO POR LA TECNOLOGÍA, LA PROGRAMACIÓN, LA SEGURIDAD INFORMÁTICA Y LINUX. DISFRUTO APRENDER NUEVAS HERRAMIENTAS, EXPLORAR EL HACKING ÉTICO Y CREAR SOLUCIONES INNOVADORAS QUE MEJOREN PROCESOS.";
-        let i = 0;
-        let typingSpeed = 50;
-        
-        function typeEffect() {
-            if (i < aboutText.length) {
-                document.getElementById("autoText").innerHTML += aboutText.charAt(i);
-                i++;
-                setTimeout(typeEffect, typingSpeed);
-            }
-        }
-        
-        // ===== CALCULAR EDAD =====
-        function calculateAge() {
-            const nacimiento = new Date(1997, 10, 27);
-            const hoy = new Date();
-            let edad = hoy.getUTCFullYear() - nacimiento.getUTCFullYear();
-            
-            const cumpleEsteAnio = new Date(hoy.getFullYear(), 10, 27);
-            if (hoy < cumpleEsteAnio) {
-                edad--;
-            }
-            
-            document.getElementById("edad").textContent = edad;
-        }
-        
-        // ===== INICIALIZAR TODO CUANDO CARGA LA PÁGINA =====
-        window.onload = function() {
-            // Iniciar efecto Matrix
-            setInterval(drawMatrix, 35);
-            
-            // Iniciar efecto de escritura
-            setTimeout(typeEffect, 1000);
-            
-            // Calcular edad
-            calculateAge();
-            
-            // Efecto de sonido de teclado (simulado)
-            const terminalSections = document.querySelectorAll('.terminal-section');
-            terminalSections.forEach(section => {
-                section.addEventListener('mouseenter', () => {
-                    section.style.boxShadow = '0 0 25px rgba(0, 255, 65, 0.4)';
-                });
-                
-                section.addEventListener('mouseleave', () => {
-                    section.style.boxShadow = '0 0 15px rgba(0, 255, 65, 0.2)';
-                });
-            });
-        };
-        
-        // Redimensionar canvas cuando cambia el tamaño de la ventana
-        window.addEventListener('resize', function() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+        <div class="grupo">
+          <h3>Datos</h3>
+          <div class="chips"><span>MySQL</span><span>Arquitectura MVC</span><span>Modelado de bases de datos</span></div>
+        </div>
+        <div class="grupo">
+          <h3>Sistemas, redes y seguridad</h3>
+          <div class="chips"><span>Linux</span><span>MikroTik</span><span>Redes</span><span>Ciberseguridad</span><span>Git y GitHub</span></div>
+        </div>
+        <div class="grupo">
+          <h3>Bajo nivel y motores</h3>
+          <div class="chips"><span>C</span><span>C++</span><span>C#</span><span>Unreal Engine</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="wrap">
+      <h2>Proyectos</h2>
+      <div class="filtros" role="group" aria-label="Filtrar proyectos">
+        <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button type="button" data-filtro="sistemas" aria-pressed="false">Sistemas de gestión</button>
+        <button type="button" data-filtro="plataformas" aria-pressed="false">Sitios y plataformas</button>
+      </div>
+      <div class="proyectos">
+        <article class="proyecto" data-cat="sistemas">
+          <h3>Ñemu</h3>
+          <p>Sistema de facturación electrónica conectado a SIFEN y e-Kuatia, para emitir y controlar comprobantes fiscales en Paraguay.</p>
+          <div class="etiquetas">Django · React</div>
+        </article>
+        <article class="proyecto" data-cat="sistemas">
+          <h3>StockCore WMS</h3>
+          <p>Sistema de inventarios para grandes empresas, con escaneo desde el celular, control de lotes y ubicaciones en depósito.</p>
+          <div class="etiquetas">PHP · MySQL</div>
+        </article>
+        <article class="proyecto" data-cat="sistemas">
+          <h3>FarmaCheck</h3>
+          <p>Estación de autochequeo de salud para farmacias de Ciudad del Este: mide presión, pulso y temperatura.</p>
+          <div class="etiquetas">Ciudad del Este</div>
+        </article>
+        <article class="proyecto" data-cat="plataformas">
+          <h3>GVS WEB</h3>
+          <p>Mi sitio profesional: portafolio, blog, tienda con pedidos por WhatsApp y panel de administración en cuatro idiomas (español, inglés, portugués y guaraní).</p>
+          <div class="etiquetas">PHP · MySQL · Multilenguaje</div>
+        </article>
+        <article class="proyecto" data-cat="plataformas">
+          <h3>Radar 365</h3>
+          <p>Plataforma de encuestas y sondeos con arquitectura MVC.</p>
+          <div class="etiquetas">PHP · MVC</div>
+          <a href="https://radar365.com.py" target="_blank" rel="noopener">radar365.com.py</a>
+        </article>
+        <article class="proyecto" data-cat="plataformas">
+          <h3>El Camino del Whisky</h3>
+          <p>Sitio de contenido sobre whisky organizado por temporadas y capítulos.</p>
+          <div class="etiquetas">PHP · MySQL</div>
+          <a href="https://elcaminodelwhisky.com" target="_blank" rel="noopener">elcaminodelwhisky.com</a>
+        </article>
+        <article class="proyecto" data-cat="plataformas">
+          <h3>Oltreshop</h3>
+          <p>Tienda en línea multilenguaje.</p>
+          <div class="etiquetas">E-commerce · Multilenguaje</div>
+          <a href="https://oltreshop.com.py" target="_blank" rel="noopener">oltreshop.com.py</a>
+        </article>
+        <article class="proyecto" data-cat="plataformas">
+          <h3>Romen Group EAS</h3>
+          <p>Tema de WordPress para una empresa de comercio exterior y aduanas, con blog de noticias y un constructor visual propio.</p>
+          <div class="etiquetas">WordPress · PHP</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="trayectoria">
+    <div class="wrap dos">
+      <div>
+        <h2>Experiencia</h2>
+        <ol class="linea">
+          <li>
+            <h3>Gobernación de Alto Paraná</h3>
+            <div class="cuando">2020 – 2025</div>
+            <p>Técnico desarrollador, redes y sistemas de información (RSI) y Director de TI.</p>
+          </li>
+          <li>
+            <h3>Micro's Informática</h3>
+            <div class="cuando">11 meses</div>
+            <p>Técnico en informática.</p>
+          </li>
+          <li>
+            <h3>Fujikura Automotive Paraguay</h3>
+            <div class="cuando">9 meses</div>
+            <p>Auditor de calidad.</p>
+          </li>
+          <li>
+            <h3>Bazar Tentación, Argentina</h3>
+            <div class="cuando">1 año</div>
+            <p>Ventas y atención al cliente.</p>
+          </li>
+        </ol>
+      </div>
+      <div>
+        <h2>Formación</h2>
+        <ol class="linea">
+          <li>
+            <h3>Ingeniería Informática</h3>
+            <div class="cuando">Cursando el 4.º año · 2026</div>
+            <p>Universidad Privada del Este, filial Ciudad del Este.</p>
+          </li>
+          <li>
+            <h3>Bachiller científico</h3>
+            <div class="cuando">2013 – 2015</div>
+            <p>Colegio Nacional General Bernardino Caballero.</p>
+          </li>
+        </ol>
+        <h2 style="margin-top:1rem">Idiomas</h2>
+        <ul class="idiomas">
+          <li>Español <span>Nativo</span></li>
+          <li>Guaraní <span>Nativo</span></li>
+          <li>Portugués <span>Avanzado</span></li>
+          <li>Inglés <span>Básico–intermedio</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <div class="wrap">
+      <h2>Contacto</h2>
+      <p>¿Tenés un sistema en mente o necesitás resolver algo de tecnología? Escribime y lo vemos.</p>
+      <div class="botones">
+        <a class="btn lleno" href="https://wa.me/595972366265" target="_blank" rel="noopener">WhatsApp +595 972 366 265</a>
+        <a class="btn vacio" href="mailto:gustavo10altoparana@gmail.com">gustavo10altoparana@gmail.com</a>
+      </div>
+      <div class="redes">
+        <a href="https://github.com/GustavoVelazquezSaavedra" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/ggvsdev" target="_blank" rel="noopener">GitHub (ggvsdev)</a>
+        <a href="https://www.linkedin.com/in/gustavo-velazquez-4b965b179/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/Gustavo1997_12" target="_blank" rel="noopener">X</a>
+        <a href="https://www.instagram.com/gustavo.velazquez1" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/gustavogabriel.velazquez1" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.tiktok.com/@gustavovelazquez97_1997" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; <span id="anio">2026</span> Gustavo Gabriel Velázquez Saavedra · Hecho con <span class="corazon">♥</span> y pasión por la tecnología
+  </div>
+</footer>
+
+<script>
+// Año del pie de página
+document.getElementById('anio').textContent = new Date().getFullYear();
+
+// Filtro de proyectos por categoría
+(function () {
+  var botones = document.querySelectorAll('.filtros button');
+  var tarjetas = document.querySelectorAll('.proyecto');
+
+  botones.forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      var filtro = boton.getAttribute('data-filtro');
+
+      botones.forEach(function (b) {
+        b.setAttribute('aria-pressed', b === boton ? 'true' : 'false');
+      });
+
+      tarjetas.forEach(function (t) {
+        t.hidden = !(filtro === 'todos' || t.getAttribute('data-cat') === filtro);
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
